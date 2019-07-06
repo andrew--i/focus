@@ -1,5 +1,8 @@
 'use strict';
 
+process.env["NODE_CONFIG_DIR"] = __dirname + "/config/";
+
+
 // API boilerplate
 const express = require('express');
 const app = express();
@@ -18,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('short', { stream: logger.stream }));
 
 // Load up the routes
-app.use('/', routes);
+app.use('/api', routes);
 
 // Start the API
 app.listen(config.apiPort);
