@@ -2,7 +2,7 @@
 
 const errors = require('../errors');
 
-exports.findAll = (req, res, next) => {
+exports.getAll = (req, res, next) => {
   // Simulate task list, normally this would be retrieved from a database
   const tasks = [
     {'_id': 1, 'name': 'milk'},

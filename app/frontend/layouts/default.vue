@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -23,68 +23,53 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+
+
+      <v-list class="footer">
+
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>location_on</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title v-text="'Адрес ...'"/>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>phone</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title v-text="'Контакты'"/>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <img src="@/static/logo.png" width="70"/>
+      </v-list>
+
+
     </v-navigation-drawer>
+
     <v-toolbar
       :clipped-left="clipped"
       fixed
       app
     >
-      <v-toolbar-side-icon @click="drawer = !drawer"/>
+
       <v-btn
         icon
         @click.stop="miniVariant = !miniVariant"
       >
         <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title"/>
-      <v-spacer/>
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
     </v-toolbar>
     <v-content>
       <v-container>
         <nuxt/>
       </v-container>
     </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>
-              compare_arrows
-            </v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
-      <span>&copy; 2019</span>
-    </v-footer>
+
   </v-app>
 </template>
 
@@ -93,25 +78,43 @@
     data() {
       return {
         clipped: false,
-        drawer: false,
-        fixed: false,
+        drawer: true,
         items: [
           {
-            icon: 'apps',
-            title: 'Welcome',
+            icon: 'home',
+            title: 'Главная',
             to: '/'
           },
           {
-            icon: 'bubble_chart',
-            title: 'Inspire',
-            to: '/inspire'
-          }
+            icon: 'business',
+            title: 'Застройщики',
+            to: '/developers'
+          },
+          {
+            icon: 'account_balance',
+            title: 'Банки',
+            to: '/under_develop_b'
+          },
+
+          {
+            icon: 'group',
+            title: 'Риэлторы',
+            to: '/under_develop_r'
+          },
+
         ],
-        miniVariant: false,
+        miniVariant: true,
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js'
+        title: 'Анализ надежности застройщиков'
       }
     }
   }
 </script>
+
+<style>
+  .footer {
+    position: absolute;
+    bottom: 0px;
+  }
+</style>

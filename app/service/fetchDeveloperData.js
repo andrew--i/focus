@@ -150,8 +150,8 @@ async function getData(url) {
 }
 
 async function main() {
-  // await grabRegions();
-  // await grabBuilders();
+  await grabRegions();
+  await grabBuilders();
   await grabBuildersInfo();
 }
 
