@@ -1,4 +1,4 @@
-const DATA_DIR = __dirname + '/data';
+const DATA_DIR = __dirname + '/../docker/data';
 const REGIONS_DIR = DATA_DIR + '/regions';
 const BUILDERS_DIR = DATA_DIR + '/builders';
 const BUILDERS_INFO_DIR = DATA_DIR + '/builders_info';

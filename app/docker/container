@@ -1,0 +1,1 @@
+docker run -i --name drill-1.16.0 -p 8047:8047 -v /home/asmirnov/projects/focus/app/docker/data:/data/focus -t drill/apache-drill:1.16.0 /bin/bash
