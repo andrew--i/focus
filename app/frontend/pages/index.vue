@@ -76,7 +76,7 @@
             nuxt
             to="/inspire"
           >
-            Continue
+            {{status}}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -92,6 +92,10 @@
     components: {
       Logo,
       VuetifyLogo
+    },
+    async asyncData({$axios}) {
+      let response = await $axios.get('/api/health');
+      return response.data;
     }
   }
 </script>

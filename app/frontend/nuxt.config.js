@@ -43,6 +43,7 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/proxy',
   ],
   /*
   ** Axios module configuration
@@ -64,6 +65,10 @@ module.exports = {
       success: colors.green.accent3
     }
   },
+
+  proxy: {
+    '/api': 'http://localhost:3001'
+  },
   /*
   ** Build configuration
   */
@@ -74,4 +79,4 @@ module.exports = {
     extend(config, ctx) {
     }
   }
-}
+};
