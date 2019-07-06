@@ -18,6 +18,7 @@ const config = require('config');
 // Set up middleware for request parsing, logging, etc.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(require('cors')());
 app.use(morgan('short', { stream: logger.stream }));
 
 // Load up the routes

@@ -10,7 +10,8 @@ router.use(middleware.doSomethingInteresting);
 
 // Wire up routers
 router.use('/health', healthRouter);
-router.use('/tasks', require('./src/regions/router'));
+router.use('/regions', require('./src/regions/router'));
+router.use('/developers', require('./src/developers/router'));
 
 // Wire up error-handling middleware
 router.use(errors.errorHandler);

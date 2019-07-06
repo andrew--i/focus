@@ -5,8 +5,7 @@ const router = require('express').Router();
 const regions = require('./index');
 
 // Tasks
-router.get('/', regions.getAll);
-router.get('/:id', regions.getDevelopers)
+router.get('/', regions.findDevelopers)
 
 // Export the router
 module.exports = router;

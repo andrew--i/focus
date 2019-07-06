@@ -56,6 +56,7 @@
       app
     >
 
+      <v-toolbar-side-icon @click="drawer = !drawer"/>
       <v-btn
         icon
         @click.stop="miniVariant = !miniVariant"
@@ -65,7 +66,7 @@
       <v-toolbar-title v-text="title"/>
     </v-toolbar>
     <v-content>
-      <v-container>
+        <v-container>
         <nuxt/>
       </v-container>
     </v-content>
@@ -106,7 +107,8 @@
         miniVariant: true,
         right: true,
         rightDrawer: false,
-        title: 'Анализ надежности застройщиков'
+        title: 'Анализ надежности застройщиков',
+        drawer: false
       }
     }
   }

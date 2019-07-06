@@ -10,11 +10,34 @@ async function makeQuery(query) {
 
 
 async function getRegions() {
-  let regions = await makeQuery('select * from dfs.focus.`regions`');
-  return regions.rows;
+  let response = await makeQuery('select id,text from dfs.focus.`regions` where disabled=false');
+  return response.rows;
+}
+
+async function getDevelopers(id, developers, limit, best) {
+  let query = 'select id, name, ' +
+    'coalesce(rating,0.0) rating, ' +
+    'minApartmentCostM2 minPriceM2, ' +
+    'foundationYear,' +
+    'shareRegionPercent regionPercent ' +
+    'from dfs.focus.`/builders/' + id + '.json`';
+
+  if (developers && developers.trim().length > 0) {
+    query += " where lower(name) like '%" + developers + "%'";
+  }
+  if(best)
+    query += " order by coalesce(rating,0.0) desc ";
+  else
+    query += " order by coalesce(rating,0.0) ";
+
+  query += " limit " + limit;
+  let response = await makeQuery(query);
+
+  return response.rows;
 }
 
 
 module.exports = {
-  getRegions: getRegions
+  getRegions: getRegions,
+  getDevelopers: getDevelopers
 };

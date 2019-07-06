@@ -14,7 +14,7 @@ module.exports = {
   */
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    title: 'Фокус-Анализ надежности застройщиков',
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
@@ -74,7 +74,7 @@ module.exports = {
   },
 
   proxy: {
-    '/api': 'http://localhost:3001'
+    '/api': 'http://0.0.0.0:3001'
   },
   /*
   ** Build configuration
