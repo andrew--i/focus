@@ -1,0 +1,29 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "frontend focus team result",
+  "author": "asmirnov",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "express": "^4.17.1",
+    "@nuxtjs/vuetify": "^0.5.6",
+    "@nuxtjs/axios": "^5.5.4",
+    "@nuxtjs/pwa": "^2.6.0",
+    "nuxt": "^2.8.1"
+  },
+  "devDependencies": {
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2",
+    "nodemon": "^1.19.1"
+  }
+}
