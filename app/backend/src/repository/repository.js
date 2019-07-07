@@ -1,21 +1,26 @@
 let axios = require('axios');
 
 async function makeQuery(query) {
-  let response = await axios.post('http://localhost:8047/query.json', {
-    queryType: 'SQL',
-    query: query
-  });
-  return response.data
+  try {
+
+    let response = await axios.post('http://localhost:8047/query.json', {
+      queryType: 'SQL',
+      query: query
+    });
+    if (response.status === 500)
+      return []
+    return response.data
+  } catch (e) {
+    return [];
+  }
 }
 
 
 async function getRegions() {
-  try {
-    let response = await makeQuery('select id,text from dfs.focus.`regions` where disabled=false');
-    return response.rows;
-  }catch (e) {
-    return [];
-  }
+  let response = await makeQuery('select id,text from dfs.focus.`regions` where disabled=false');
+
+  return response.rows;
+
 }
 
 async function getDevelopers(id, developers, limit, best) {
@@ -29,7 +34,7 @@ async function getDevelopers(id, developers, limit, best) {
   if (developers && developers.trim().length > 0) {
     query += " where lower(name) like '%" + developers + "%'";
   }
-  if(best)
+  if (best)
     query += " order by coalesce(rating,0.0) desc ";
   else
     query += " order by coalesce(rating,0.0) ";
