@@ -33,7 +33,6 @@
 
 
       <v-layout row align-center >
-<!--        <label>Ваш регион:</label>-->
         <v-autocomplete
           v-model="region"
           :item-value="v => v"
@@ -49,12 +48,13 @@
 
     </v-layout>
 
-    <div class="developer-charts">
+    <div>
       <developers-chart mode="top" v-bind:developers="developers"/>
     </div>
 
     <chart-divider v-bind:region="region"/>
-    <div class="developer-charts">
+
+    <div class="developer-charts-bottom">
       <developers-chart mode="bottom" v-bind:developers="developers"/>
     </div>
 
@@ -149,4 +149,8 @@
 </script>
 
 <style>
+
+  .developer-charts-bottom div {
+    height: 200px;
+  }
 </style>

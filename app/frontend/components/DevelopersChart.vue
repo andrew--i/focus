@@ -116,7 +116,8 @@
                 ctx = chartInstance.ctx;
               ctx.textAlign = 'center';
               ctx.textBaseline = 'bottom';
-              ctx.font = '15px Roboto';
+
+              ctx.font = (self.isTop() ? '15px' : '20px') + ' Roboto';
               this.data.datasets.forEach(function (dataset, i) {
                 if (dataset.developersDataSet) {
                   let meta = chartInstance.controller.getDatasetMeta(i);
