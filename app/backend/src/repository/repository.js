@@ -39,7 +39,7 @@ async function getDevelopers(id, developers, limit, best) {
   else
     query += " order by coalesce(rating,0.0) ";
 
-  query += ", shareRegionPercent desc limit " + limit;
+  query += ", cast ( shareRegionPercent as FLOAT ) desc limit " + limit;
   let response = await makeQuery(query);
 
   return response.rows;
