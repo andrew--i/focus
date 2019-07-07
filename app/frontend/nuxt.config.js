@@ -57,7 +57,6 @@ module.exports = {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: '/'
   },
   /*
   ** vuetify module configuration

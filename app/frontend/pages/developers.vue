@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
 
     <v-layout row>
 
@@ -59,7 +59,7 @@
     </div>
 
 
-  </div>
+  </v-container>
 
 </template>
 
