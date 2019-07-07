@@ -10,8 +10,12 @@ async function makeQuery(query) {
 
 
 async function getRegions() {
-  let response = await makeQuery('select id,text from dfs.focus.`regions` where disabled=false');
-  return response.rows;
+  try {
+    let response = await makeQuery('select id,text from dfs.focus.`regions` where disabled=false');
+    return response.rows;
+  }catch (e) {
+    return [];
+  }
 }
 
 async function getDevelopers(id, developers, limit, best) {

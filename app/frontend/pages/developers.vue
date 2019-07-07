@@ -28,6 +28,7 @@
                     pl-3
                     label="Поиск застройщика"
                     v-model="searchDeveloperText"
+                    @change="debounceUpdateDevelopers()"
                     hide-details single-line></v-text-field>
 
 
@@ -66,8 +67,11 @@
 <script>
   import DevelopersChart from '~/components/DevelopersChart.vue'
   import ChartDivider from '~/components/ChartDivider.vue'
+  import _ from 'lodash';
+
 
   export default {
+
     components: {
       DevelopersChart,
       ChartDivider
@@ -80,6 +84,8 @@
     mounted() {
       this.region = this.regions[0];
       this.updateDevelopers();
+
+      this.debounceUpdateDevelopers = _.debounce(this.updateDevelopers, 400);
     },
     data() {
       let bestOrWorst = [
@@ -131,7 +137,7 @@
             regionId: regionId,
             limit: this.perViewItem.value,
             best: this.bestOrWorstItem.value ? true : null,
-
+            developer: this.searchDeveloperText
           }
         });
         this.developers.splice(0, this.developers.length);
