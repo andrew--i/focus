@@ -86,15 +86,14 @@ async function grabBuilder(region) {
           break;
       } else {
         builders.push(result);
-        break
       }
       page++;
-      fs.writeFileSync(buildersPath, JSON.stringify(builders));
     } else {
       console.log('could not find builders for region ' + region.id);
       break;
     }
   }
+  fs.writeFileSync(buildersPath, JSON.stringify(builders));
 }
 
 async function grabBuildersInfo() {
@@ -150,9 +149,9 @@ async function getData(url) {
 }
 
 async function main() {
-  await grabRegions();
+  // await grabRegions();
   await grabBuilders();
-  await grabBuildersInfo();
+  // await grabBuildersInfo();
 }
 
 
