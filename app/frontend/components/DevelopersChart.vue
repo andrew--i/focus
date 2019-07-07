@@ -173,14 +173,15 @@
               },
               ticks: {
                 beginAtZero: true,
-                display: false
+                display: false,
+                max: 6
               }
 
             }],
             xAxes: [{
               gridLines: {
                 drawBorder: false,
-                display: false
+                // display: false
               }
             }]
           }
