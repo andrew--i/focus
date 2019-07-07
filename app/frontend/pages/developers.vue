@@ -32,9 +32,8 @@
                     hide-details single-line></v-text-field>
 
 
-      <v-spacer/>
-      <v-layout row align-center pl-1>
-        <label>Ваш регион:</label>
+      <v-layout row align-center >
+<!--        <label>Ваш регион:</label>-->
         <v-autocomplete
           v-model="region"
           :item-value="v => v"

@@ -57,7 +57,7 @@
     >
 
       <v-toolbar-side-icon @click="drawer = !drawer"/>
-      <v-btn
+      <v-btn v-if="drawer"
         icon
         @click.stop="miniVariant = !miniVariant"
       >
