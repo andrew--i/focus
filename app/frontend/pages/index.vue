@@ -45,6 +45,7 @@
       </label>
 
 
+      <label>на основе единого реестра <a class="header-link" href="https://erzrf.ru/">застройщиков </a></label>
     </v-layout>
   </v-container>
 
@@ -137,5 +138,11 @@
   .menu-footer {
     font-family: circle;
     font-size: 30px;
+  }
+
+  .header-link {
+    text-decoration: none;
+    text-underline: none;
+    color: black;
   }
 </style>
