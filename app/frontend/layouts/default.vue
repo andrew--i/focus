@@ -32,7 +32,7 @@
             <v-icon>location_on</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="'Адрес ...'"/>
+            <v-list-tile-title v-text="'Наш адрес'"/>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
@@ -40,7 +40,7 @@
             <v-icon>phone</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="'Контакты'"/>
+            <v-list-tile-title v-text="'Наши контакты'"/>
           </v-list-tile-content>
         </v-list-tile>
 
