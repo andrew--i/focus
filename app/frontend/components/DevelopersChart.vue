@@ -1,6 +1,7 @@
 <script>
   import {Bar} from 'vue-chartjs'
 
+
   export default {
     extends: Bar,
     props: ['developers', 'mode'],
@@ -60,7 +61,7 @@
 
         let yFunc;
         if (this.isTop()) {
-          yFunc = d => d.rating;
+          yFunc = d => parseFloat(d.rating) + 1;
         } else {
           yFunc = d => -d.minPriceM2;
         }
@@ -70,12 +71,31 @@
           labels: developers.map(() => ''),
           datasets: [
             {
+              developersDataSet: true,
               hoverBackgroundColor: 'rgba(129,212,250 ,1)',
               data: developers.map(d => {
                 return {y: yFunc(d), developer: d}
               })
-            }]
+            },
+          ]
         };
+
+        if (this.isTop()) {
+
+          let backgroundColors = developers.map(d => {
+              let rating = parseFloat(d.rating);
+              if (rating < 1) {
+                return 'rgb(217,61,91)'
+              } else if (rating < 3) {
+                return 'rgb(129,167,217)'
+              }
+              return 'rgb(113,217,168)'
+            }
+          );
+
+          data.datasets[0].backgroundColor = backgroundColors;
+
+        }
 
         this.renderChart(data, this.defaultOptions);
       }
@@ -98,13 +118,14 @@
               ctx.textBaseline = 'bottom';
               ctx.font = '15px Roboto';
               this.data.datasets.forEach(function (dataset, i) {
-                let meta = chartInstance.controller.getDatasetMeta(i);
-                meta.data.forEach(function (bar, index) {
-                  let data = dataset.data[index];
-                  let topLabelOffset = self.getBarLabelOffset(index, dataset.data);
-                  ctx.fillText(self.getBarLabel(data.developer), bar._model.x, bar._model.y + topLabelOffset);
-
-                });
+                if (dataset.developersDataSet) {
+                  let meta = chartInstance.controller.getDatasetMeta(i);
+                  meta.data.forEach(function (bar, index) {
+                    let data = dataset.data[index];
+                    let topLabelOffset = self.getBarLabelOffset(index, dataset.data);
+                    ctx.fillText(self.getBarLabel(data.developer), bar._model.x, bar._model.y + topLabelOffset);
+                  });
+                }
               });
             }
           },
@@ -146,7 +167,6 @@
           maintainAspectRatio: false,
           scales: {
             yAxes: [{
-
               gridLines: {
                 drawBorder: false,
                 display: false
@@ -161,9 +181,6 @@
               gridLines: {
                 drawBorder: false,
                 display: false
-              },
-              ticks: {
-                mirror: !this.isTop()
               }
             }]
           }

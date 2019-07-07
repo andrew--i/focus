@@ -142,7 +142,6 @@
         this.developers.splice(0, this.developers.length);
         if (response.data && response.data.developers)
           response.data.developers.forEach(d => this.developers.push(d));
-        console.log(this.developers);
       },
 
     }
