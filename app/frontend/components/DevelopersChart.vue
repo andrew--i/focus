@@ -22,7 +22,7 @@
         return (this.mode ? this.mode : 'top') === 'top';
       },
       getBarLabel(data) {
-        return this.isTop() ? data.name : data.minPriceM2 + ' р/м2';
+        return this.isTop() ? data.name : data.minPriceM2;
       },
 
       getBarLabelOffset(index, developers) {

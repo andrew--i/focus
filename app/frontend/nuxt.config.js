@@ -56,7 +56,9 @@ module.exports = {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    baseURL: '/'
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -74,7 +76,7 @@ module.exports = {
   },
 
   proxy: {
-    '/api': 'http://0.0.0.0:3001'
+    '/api': process.env.BACKEND_HOST ? `http://${process.env.BACKEND_HOST}:3001` : 'http://0.0.0.0:3001'
   },
   /*
   ** Build configuration

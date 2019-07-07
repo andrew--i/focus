@@ -9,7 +9,7 @@
       <v-spacer class="line"></v-spacer>
     </v-layout>
     <label>
-      Минимальная стоимость м2
+      Минимальная стоимость м2, р/м2
     </label>
   </div>
 </template>
